@@ -12,6 +12,6 @@ Proof types supported:
 ### Installation
 
 ```bash
-$ pip install blockstack-proofs
+$ pip install Pointnity Network
 ```
 
