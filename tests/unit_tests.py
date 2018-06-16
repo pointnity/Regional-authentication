@@ -65,3 +65,38 @@ def is_profile_in_legacy_format(profile):
 
     if "@context" in profile:
         return False
+
+    is_in_legacy_format = False
+
+    if "avatar" in profile:
+        is_in_legacy_format = True
+    elif "cover" in profile:
+        is_in_legacy_format = True
+    elif "bio" in profile:
+        is_in_legacy_format = True
+    elif "twitter" in profile:
+        is_in_legacy_format = True
+    elif "facebook" in profile:
+        is_in_legacy_format = True
+
+    return is_in_legacy_format
+
+
+class ProofcheckerTestCase(unittest.TestCase):
+
+    def tearDown(self):
+        pass
+
+    def test_proofs(self):
+        """ Check twitter proof
+        """
+
+        for username in test_users:
+            profile, zone_file = get_profile(username)
+
+            if not is_profile_in_legacy_format(zone_file):
+                proofs = profile_v3_to_proofs(profile, username + '.id')
+            else:
+                proofs = profile_to_proofs(profile, username + '.id')
+
+            for proof in proofs:
