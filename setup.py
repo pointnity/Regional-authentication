@@ -4,7 +4,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='blockstack-proofs',
+    name='Pointnity Network',
     version='0.0.10',
     url='https://github.com/blockstack/blockstack-proofs',
     license='MIT',
