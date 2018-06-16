@@ -44,3 +44,24 @@ def get_profile(username):
         return data['profile'], data['zone_file']
     else:
         return data['profile'], None
+
+
+def is_profile_in_legacy_format(profile):
+    """
+    Is a given profile JSON object in legacy format?
+    """
+    if isinstance(profile, dict):
+        pass
+    elif isinstance(profile, (str, unicode)):
+        try:
+            profile = json.loads(profile)
+        except ValueError:
+            return False
+    else:
+        return False
+
+    if "@type" in profile:
+        return False
+
+    if "@context" in profile:
+        return False
