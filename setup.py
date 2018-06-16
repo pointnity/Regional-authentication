@@ -16,3 +16,17 @@ setup(
     download_url='https://github.com/blockstack/blockstack-proofs/archive/master.zip',
     zip_safe=False,
     install_requires=[
+        'beautifulsoup4>=4.4.1',
+        'requests>=2.8.1',
+        'dnspython>=1.12.0'
+    ],
+    classifiers=[
+        'Intended Audience :: Developers',
+        'License :: OSI Approved :: MIT License',
+        'Operating System :: OS Independent',
+        'Programming Language :: Python',
+        'Topic :: Internet',
+        'Topic :: Security :: Cryptography',
+        'Topic :: Software Development :: Libraries :: Python Modules',
+    ],
+)
