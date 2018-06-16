@@ -100,3 +100,18 @@ class ProofcheckerTestCase(unittest.TestCase):
                 proofs = profile_to_proofs(profile, username + '.id')
 
             for proof in proofs:
+                print proof
+                if proof['service'] in check_proofs:
+                    self.assertTrue(proof['valid'])
+
+    def test_domain_proof(self):
+        """ Check domain proof
+        """
+
+        for test_domain in test_domains:
+            username = test_domain['username']
+            domain = test_domain['domain']
+
+            proof_txt = get_proof_from_txt_record(domain)
+
+            validProof = contains_valid_proof_statement(proof_txt, username + ".id")
