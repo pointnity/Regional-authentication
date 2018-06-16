@@ -30,3 +30,17 @@ test_domains = [{"username": "muneeb", 'domain': 'muneebali.com'}]
 check_proofs = ['twitter', 'facebook', 'github']
 
 BASE_URL = 'https://resolver.onename.com/v2/users/'
+
+
+def get_profile(username):
+
+    resp = requests.get(BASE_URL + username, timeout=10)
+    #resp = requests.get(BASE_URL + username + ".json", timeout=10)
+    data = resp.json()
+
+    data = data[username]
+
+    if 'zone_file' in data:
+        return data['profile'], data['zone_file']
+    else:
+        return data['profile'], None
