@@ -115,3 +115,9 @@ class ProofcheckerTestCase(unittest.TestCase):
             proof_txt = get_proof_from_txt_record(domain)
 
             validProof = contains_valid_proof_statement(proof_txt, username + ".id")
+
+            self.assertTrue(validProof)
+
+if __name__ == '__main__':
+
+    unittest.main()
